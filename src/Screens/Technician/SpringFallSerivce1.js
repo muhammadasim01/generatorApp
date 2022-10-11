@@ -31,23 +31,118 @@ const SpringFallSerivce1 = ({navigation, route}) => {
   const [data, setData] = useState([
     {
       id: 1,
-      name: 'Fuel System',
-      selected: false,
+      name: 'Enclosure',
+      selected: true,
     },
     {
       id: 2,
-      name: 'Control Panel',
-      selected: false,
+      name: 'Base',
+      selected: true,
     },
     {
       id: 3,
-      name: 'Battery Charger',
-      selected: false,
+      name: 'Vents',
+      selected: true,
     },
     {
       id: 4,
-      name: 'Voltage Regulator',
-      selected: false,
+      name: 'Engine',
+      selected: true,
+    },
+    {
+      id: 1,
+      name: 'Radiator',
+      selected: true,
+    },
+    {
+      id: 2,
+      name: 'Transfer Switch',
+      selected: true,
+    },
+    {
+      id: 3,
+      name: 'Battery',
+      selected: true,
+    },
+    {
+      id: 4,
+      name: 'Clean interior of generator',
+      selected: true,
+    },
+    {
+      id: 1,
+      name: 'Insure all exterior vents are clear of debris',
+      selected: true,
+    },
+    {
+      id: 2,
+      name: 'Transfer Power test',
+      selected: true,
+    },
+    {
+      id: 3,
+      name: 'Check voltage',
+      selected: true,
+    },
+    {
+      id: 4,
+      name: 'Check frequency',
+      selected: true,
+    },
+    {
+      id: 2,
+      name: 'Wipe down generator',
+      selected: true,
+    },
+    {
+      id: 3,
+      name: 'Lubricate transfer switch',
+      selected: true,
+    },
+    {
+      id: 4,
+      name: 'Check battery level and functioning',
+      selected: true,
+    },
+    {
+      id: 2,
+      name: 'Check battery cable and tighten connections',
+      selected: true,
+    },
+    {
+      id: 3,
+      name: 'Load bank as described in load bank details sheet',
+      selected: true,
+    },
+    {
+      id: 4,
+      name: 'Radiator level and antifreez temperature rating / check',
+      selected: true,
+    },
+    {
+      id: 2,
+      name: 'Add antifreeze if needed',
+      selected: true,
+    },
+    {
+      id: 3,
+      name: 'Replace oil and oil filter',
+      selected: true,
+    },
+    {
+      id: 4,
+      name: 'Replace air filter',
+      selected: true,
+    },
+    {
+      id: 3,
+      name: 'Proper recycling/disposal of all fluids',
+      selected: true,
+    },
+    {
+      id: 4,
+      name: 'Provide full written report',
+      selected: true,
     },
   ]);
   return (

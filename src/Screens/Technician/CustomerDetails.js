@@ -39,7 +39,6 @@ const CustomerDetails = ({navigation, route}) => {
           Authorization: `Bearer ${user.access_token}`,
         },
       };
-
       axios(config)
         .then(function (response) {
           console.log(response.data);
@@ -175,7 +174,7 @@ const CustomerDetails = ({navigation, route}) => {
                   borderWidth: 1,
                   borderColor: '#004890',
                 }}>
-                <IconC name="check" color={'#FFFFFF'} size={20} />
+                <IconC name="check" color={'#ffffff'} size={20} />
               </View>
             </View>
             <View style={{flexDirection: 'row'}}>
@@ -400,15 +399,13 @@ const CustomerDetails = ({navigation, route}) => {
               title={'Start Warranty Call'}
               width={180}
               onPress={() => {
-                console.log({
-                  service_type: 'Warranty Call',
-                  user_id: item.id,
-                });
-                navigation.navigate('SpringFallSerivce1', {
+                navigation.navigate('WarrantyCall1', {
                   fromfirstScreen: {
                     service_type: 'Warranty Call',
                     user_id: item.id,
                     generator_id: selected,
+                    sno: generators[0].sno,
+                    model: generators[0].model_no,
                   },
                 });
               }}
