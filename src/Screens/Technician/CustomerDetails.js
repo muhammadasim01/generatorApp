@@ -353,7 +353,12 @@ const CustomerDetails = ({navigation, route}) => {
       />
       {selected ? (
         <>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingRight: 5,
+            }}>
             <Button
               title={'Start Spring Service'}
               onPress={() => {

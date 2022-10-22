@@ -27,6 +27,7 @@ import UpdateService from './src/Screens/Technician/UpdateService';
 import ServiceCall1 from './src/Screens/Technician/ServiceCall1';
 import ServiceCall2 from './src/Screens/Technician/ServiceCall2';
 import WarrantyCall1 from './src/Screens/Technician/WarrantyCall1';
+import WarrantyCall2 from './src/Screens/Technician/WarrantyCall2';
 import {useDispatch, useSelector} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {loginUser} from './src/store/Actions/actions';
@@ -159,6 +160,11 @@ const TechnicianStack = () => {
         options={{headerShown: null}}
         name="WarrantyCall1"
         component={WarrantyCall1}
+      />
+      <Stack.Screen
+        options={{headerShown: null}}
+        name="WarrantyCall2"
+        component={WarrantyCall2}
       />
       <Stack.Screen
         options={{headerShown: null}}

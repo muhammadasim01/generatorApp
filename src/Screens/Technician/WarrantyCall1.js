@@ -25,10 +25,21 @@ const ServiceCall1 = ({navigation, route}) => {
   const [customStep, setCustomStep] = useState('');
   const [po, setPo] = useState(Math.floor(Math.random() * 90000) + 10000);
   const [note, setNote] = useState('');
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    console.log('ROUTES', route.params);
-  }, []);
+  const [customData, setCustomData] = useState([]);
+  const [warrantyData, setWarrantyData] = useState({
+    condition: '',
+    hours: '',
+    ownerDescriptionOfProblem: '',
+    workedPerformed: '',
+    serial: fromfirstScreen.sno,
+    model: fromfirstScreen.model,
+  });
+
+  const inputHandler = (name, event) => {
+    setWarrantyData({...warrantyData, [name]: event});
+    console.log(warrantyData);
+  };
+
   return (
     <Layout back navigation={navigation}>
       <Text
@@ -82,6 +93,8 @@ const ServiceCall1 = ({navigation, route}) => {
           multiline={true}
           underlineColor="tranparent" // add this
           outlineColor="tranparent"
+          value={warrantyData.condition}
+          onChangeText={text => inputHandler('condition', text)}
           style={{
             height: 50,
 
@@ -111,6 +124,8 @@ const ServiceCall1 = ({navigation, route}) => {
           underlineColor="tranparent" // add this
           outlineColor="tranparent"
           keyboardType="number-pad"
+          value={warrantyData.hours}
+          onChangeText={text => inputHandler('hours', text)}
           style={{
             height: 50,
 
@@ -149,6 +164,8 @@ const ServiceCall1 = ({navigation, route}) => {
           multiline={true}
           underlineColor="tranparent" // add this
           outlineColor="tranparent"
+          value={warrantyData.ownerDescriptionOfProblem}
+          onChangeText={text => inputHandler('ownerDescriptionOfProblem', text)}
           style={{
             height: 100,
 
@@ -179,6 +196,8 @@ const ServiceCall1 = ({navigation, route}) => {
           multiline={true}
           underlineColor="tranparent" // add this
           outlineColor="tranparent"
+          value={warrantyData.workedPerformed}
+          onChangeText={text => inputHandler('workedPerformed', text)}
           style={{
             height: 100,
 
@@ -196,7 +215,7 @@ const ServiceCall1 = ({navigation, route}) => {
         />
       </View>
 
-      {data.length ? (
+      {customData.length ? (
         <View
           style={{
             marginVertical: 20,
@@ -211,7 +230,7 @@ const ServiceCall1 = ({navigation, route}) => {
             marginBottom: 10,
           }}>
           <FlatList
-            data={data}
+            data={customData}
             renderItem={({item}) => (
               <View style={{padding: 10, borderBottomWidth: 1}}>
                 <Text style={{color: '#000'}}>{item.name}</Text>
@@ -234,7 +253,7 @@ const ServiceCall1 = ({navigation, route}) => {
           <TextInput
             activeUnderlineColor="transparent"
             editable={false}
-            value={fromfirstScreen.sno}
+            value={warrantyData.serial}
             //  onChangeText = {(text)=>setPo(text)}
 
             underlineColor="tranparent" // add this
@@ -264,7 +283,7 @@ const ServiceCall1 = ({navigation, route}) => {
           </Text>
           <TextInput
             activeUnderlineColor="transparent"
-            value={fromfirstScreen.model}
+            value={warrantyData.model}
             editable={false}
             underlineColor="tranparent" // add this
             outlineColor="tranparent"
@@ -369,10 +388,16 @@ const ServiceCall1 = ({navigation, route}) => {
           title={'Next'}
           width={150}
           onPress={() => {
-            navigation.navigate('ServiceCall2', {
+            navigation.navigate('WarrantyCall2', {
               fromSecondScreen: {
-                note: note,
-                materials: data,
+                condition: warrantyData.condition,
+                hours: warrantyData.hours,
+                ownerDescriptionOfProblem:
+                  warrantyData.ownerDescriptionOfProblem,
+                workedPerformed: warrantyData.workedPerformed,
+                serial: warrantyData.serial,
+                modal: warrantyData.model,
+                customData: customData,
                 po: po,
                 user_id: fromfirstScreen.user_id,
                 service_type: fromfirstScreen.service_type,
@@ -440,13 +465,13 @@ const ServiceCall1 = ({navigation, route}) => {
               <TouchableOpacity
                 style={styles.otCancel}
                 onPress={() => {
-                  let newArray = [...data];
+                  let newArray = [...customData];
                   newArray.push({
-                    id: data.length,
+                    id: customData.length,
                     name: customStep,
                     custom: true,
                   });
-                  setData(newArray);
+                  setCustomData(newArray);
                   setIsVisible(false);
                   setCustomStep('');
                 }}>

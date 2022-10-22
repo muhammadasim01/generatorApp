@@ -231,7 +231,6 @@ const ServiceCall1 = ({navigation, route}) => {
           </View>
           <View style={{marginHorizontal: 20, marginTop: 25}}>
             <TextInput
-              //   label="Email"
               value={customStep}
               onChangeText={text => setCustomStep(text)}
               activeUnderlineColor="transparent"
