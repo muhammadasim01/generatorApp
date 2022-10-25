@@ -8,6 +8,7 @@ import axios from 'axios';
 import {useSelector} from 'react-redux';
 import Button from '../../components/Button';
 import IconC from 'react-native-vector-icons/AntDesign';
+import {black} from 'react-native-paper/lib/typescript/styles/colors';
 
 const CustomerDetails = ({navigation, route}) => {
   const scrollViewRef = useRef();
@@ -357,7 +358,6 @@ const CustomerDetails = ({navigation, route}) => {
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
-              paddingRight: 5,
             }}>
             <Button
               title={'Start Spring Service'}
@@ -370,11 +370,11 @@ const CustomerDetails = ({navigation, route}) => {
                   },
                 });
               }}
-              width={180}
+              width={160}
             />
             <Button
               title={'Start Fall Service'}
-              width={180}
+              width={160}
               onPress={() => {
                 navigation.navigate('SpringFallSerivce1', {
                   fromfirstScreen: {
@@ -386,7 +386,11 @@ const CustomerDetails = ({navigation, route}) => {
               }}
             />
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}>
             <Button
               title={'Start Service Call'}
               onPress={() => {
@@ -398,11 +402,11 @@ const CustomerDetails = ({navigation, route}) => {
                   },
                 });
               }}
-              width={180}
+              width={160}
             />
             <Button
               title={'Start Warranty Call'}
-              width={180}
+              width={160}
               onPress={() => {
                 navigation.navigate('WarrantyCall1', {
                   fromfirstScreen: {

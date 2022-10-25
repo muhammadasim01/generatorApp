@@ -19,12 +19,11 @@ import mime from 'mime';
 import SimpleToast from 'react-native-simple-toast';
 import IconC from 'react-native-vector-icons/AntDesign';
 import axios from 'axios';
-import {useEffect} from 'react';
 let width = Dimensions.get('screen').width / 2.6;
 let height = Dimensions.get('screen').height / 7;
 
 const SpringFallSerivce6 = ({navigation, route}) => {
-  var {fromSecondScreen} = route.params;
+  const {fromSecondScreen} = route.params;
   const user = useSelector(state => state.Reducer.user);
   const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState(false);
@@ -63,11 +62,9 @@ const SpringFallSerivce6 = ({navigation, route}) => {
       image: null,
     },
   ]);
-  useEffect(() => {
-    console.log('CUSTOM DATA', fromSecondScreen.customData);
-  }, []);
+
   const submitService = () => {
-    // console.log(fromSecondScreen);
+    console.log(fromSecondScreen);
     let data = new FormData();
     let newImages = [];
 
@@ -76,41 +73,44 @@ const SpringFallSerivce6 = ({navigation, route}) => {
       console.log(image[0], 'FFFFAFAFAFAFAFAAFAFRFRFR');
       if (image.some(e => e.photo_id != null)) {
         image.map(item => {
-          // console.log(item);
+          console.log(item);
           newImages.push(item.photo_id);
         });
         console.log(newImages, 'AAAAAAAAA');
-        console.log('fromSecondScreen', fromSecondScreen);
-        var newArray = [];
-        fromSecondScreen.customData.map(item => {
+        let newArray = [];
+        fromSecondScreen.materials.map(item => {
           newArray.push(item.name);
         });
         console.log(newArray, 'Material Test 123');
         data.append('user_id', fromSecondScreen.user_id);
-        data.append('condition', fromSecondScreen.condition);
-        data.append('generator_id', fromSecondScreen.generator_id);
-        data.append('hours', fromSecondScreen.hours);
-        data.append('model', fromSecondScreen.model);
-        data.append('description', fromSecondScreen.ownerDescriptionOfProblem);
-        data.append('po', fromSecondScreen.po);
-        data.append('serial', fromSecondScreen.serial);
-        data.append('service_type', 'Warranty Call');
-        data.append('worked_perform', fromSecondScreen.workedPerformed);
-        data.append('date', fromSecondScreen.date);
-        data.append('time', fromSecondScreen.time);
-        data.append('status', selected ? 'incomplete' : 'complete');
-        // data.append('custom_field', newArray);
+        data.append('tech_id', user.user.id);
+        data.append('notes', fromSecondScreen.note);
         newArray.map(item => {
-          data.append('custom_field[]', item);
+          data.append('materials[]', item);
         });
+
+        data.append(
+          'date',
+          new Date()
+            .toISOString()
+            .replace(/T.*/, '')
+            .split('-')
+            .reverse()
+            .join('-'),
+        );
+        data.append('time', new Date().toLocaleTimeString());
+
+        data.append('service_type', 'Service Call');
+        data.append('status', selected ? 'incomplete' : 'complete');
+        data.append('generator_id', fromSecondScreen.generator_id);
+
+        data.append('po', fromSecondScreen.po);
+
         newImages.map(item => {
           if (item) {
             data.append('photo[]', item);
           }
         });
-        setLoading(false);
-        console.log('DATA', data);
-        console.log('IS THIS AN ARRAY', newArray);
         var requestOptions = {
           method: 'POST',
           headers: {
@@ -121,7 +121,7 @@ const SpringFallSerivce6 = ({navigation, route}) => {
         };
 
         fetch(
-          'http://generatorapp.titanbyte.co/api/warranty-call',
+          'https://generator.thecodelogy.com/api/service-call',
           requestOptions,
         )
           .then(response => response.text())
@@ -190,7 +190,7 @@ const SpringFallSerivce6 = ({navigation, route}) => {
           console.log(res.data, 'CCCAHGAJFJAFJAFJAJFFAJ');
         })
         .catch(function (error) {
-          console.log(error);
+          console.log('BACKEND ERROR', error);
           setSelectedIndex('');
         });
     });

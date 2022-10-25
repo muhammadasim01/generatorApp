@@ -35,9 +35,11 @@ const ServiceCall1 = ({navigation, route}) => {
     model: fromfirstScreen.model,
   });
 
+  const [time, setTime] = useState(new Date().toLocaleTimeString());
+  const [date, setDate] = useState(new Date().toLocaleDateString());
+
   const inputHandler = (name, event) => {
     setWarrantyData({...warrantyData, [name]: event});
-    console.log(warrantyData);
   };
 
   return (
@@ -319,7 +321,7 @@ const ServiceCall1 = ({navigation, route}) => {
           <TextInput
             activeUnderlineColor="transparent"
             editable={false}
-            value={`${new Date().toLocaleDateString()}`}
+            value={date}
             //  onChangeText = {(text)=>setPo(text)}
 
             underlineColor="tranparent" // add this
@@ -349,7 +351,7 @@ const ServiceCall1 = ({navigation, route}) => {
           </Text>
           <TextInput
             activeUnderlineColor="transparent"
-            value={`${new Date().toLocaleTimeString()}`}
+            value={time}
             editable={false}
             underlineColor="tranparent" // add this
             outlineColor="tranparent"
@@ -396,12 +398,14 @@ const ServiceCall1 = ({navigation, route}) => {
                   warrantyData.ownerDescriptionOfProblem,
                 workedPerformed: warrantyData.workedPerformed,
                 serial: warrantyData.serial,
-                modal: warrantyData.model,
+                model: warrantyData.model,
                 customData: customData,
-                po: po,
+                po: po.toString(),
                 user_id: fromfirstScreen.user_id,
                 service_type: fromfirstScreen.service_type,
                 generator_id: fromfirstScreen.generator_id,
+                date: date,
+                time: time,
               },
             });
           }}
