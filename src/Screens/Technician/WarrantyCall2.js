@@ -64,7 +64,7 @@ const SpringFallSerivce6 = ({navigation, route}) => {
     },
   ]);
   useEffect(() => {
-    console.log('CUSTOM DATA', fromSecondScreen.customData);
+    console.log('TOKEN',`Bearer ${user.access_token}`);
   }, []);
   const submitService = () => {
     // console.log(fromSecondScreen);
@@ -167,14 +167,13 @@ const SpringFallSerivce6 = ({navigation, route}) => {
       var data = new FormData();
 
       data.append('photo', newImage);
-
       var config = {
         method: 'post',
         url: 'http://generatorapp.titanbyte.co/api/warranty-call-photo',
         headers: {
           'Content-Type': 'multipart/form-data',
 
-          Authorization: `Bearer ${user.access_token}`,
+          'Authorization': `Bearer ${user.access_token}`,
         },
         data: data,
       };

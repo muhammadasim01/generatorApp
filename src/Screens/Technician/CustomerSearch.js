@@ -50,7 +50,7 @@ const CustomerSearch = ({navigation}) => {
 
     var config = {
       method: 'get',
-      url: `https://generator.thecodelogy.com/api/all-customers`,
+      url: `http://generatorapp.titanbyte.co/api/all-customers`,
       headers: {
         Authorization: `Bearer ${user.access_token}`,
       },
@@ -78,7 +78,7 @@ const CustomerSearch = ({navigation}) => {
 
   //     var config = {
   //       method: 'get',
-  //       url: 'https://generator.thecodelogy.com/api/all-customers',
+  //       url: 'http://generatorapp.titanbyte.co/api/all-customers',
   //       headers: {
   //         Authorization: `Bearer ${user.access_token}`,
   //       },

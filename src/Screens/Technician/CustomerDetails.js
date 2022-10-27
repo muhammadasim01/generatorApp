@@ -33,7 +33,7 @@ const CustomerDetails = ({navigation, route}) => {
       setLoading(true);
       var config = {
         method: 'get',
-        url: `https://generator.thecodelogy.com/api/customer-generator/${item.id}`,
+        url: `http://generatorapp.titanbyte.co/api/customer-generator/${item.id}`,
         headers: {
           Accept: 'application/json',
 

@@ -36,7 +36,7 @@ const UserNotifications = ({navigation}) => {
     };
 
     fetch(
-      `https://generator.thecodelogy.com/api/customer-notifications/${2}`,
+      `http://generatorapp.titanbyte.co/api/customer-notifications/${2}`,
       requestOptions,
     )
       .then(response => response.text())

@@ -39,7 +39,7 @@ const CustomerDashboard = ({navigation}) => {
     };
 
     fetch(
-      `https://generator.thecodelogy.com/api/complete-service-call?user_id=${user.user.id}`,
+      `http://generatorapp.titanbyte.co/api/complete-service-call?user_id=${user.user.id}`,
       requestOptions,
     )
       .then(response => response.text())
@@ -52,7 +52,7 @@ const CustomerDashboard = ({navigation}) => {
 
     // var config = {
     //   method: 'post',
-    //   url: 'https://generator.thecodelogy.com/api/customer-call-service',
+    //   url: 'http://generatorapp.titanbyte.co/api/customer-call-service',
     //   headers: {
     //     'content-type': 'application/json',
     //     Authorization: `Bearer ${user.access_token}`,
@@ -79,7 +79,7 @@ const CustomerDashboard = ({navigation}) => {
 
     var config = {
       method: 'get',
-      url: `https://generator.thecodelogy.com/api/service-call-request/${user.user.id}`,
+      url: `http://generatorapp.titanbyte.co/api/service-call-request/${user.user.id}`,
       headers: {
         Accept: 'application/json',
         Authorization: `Bearer ${user.access_token}`,

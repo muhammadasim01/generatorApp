@@ -20,7 +20,7 @@ const ServiceDetail = ({navigation, route}) => {
 
       var config = {
         method: 'get',
-        url: `https://generator.thecodelogy.com/api/customer-call-history-detail/${id}`,
+        url: `http://generatorapp.titanbyte.co/api/customer-call-history-detail/${id}`,
         headers: {
           Accept: 'application/json',
           Authorization: `Bearer ${user.access_token}`,

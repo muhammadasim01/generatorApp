@@ -66,7 +66,7 @@ const Map = ({navigation}) => {
         setLong(position.coords.longitude);
         var config = {
           method: 'get',
-          url: 'https://generator.thecodelogy.com/api/my-customers',
+          url: 'http://generatorapp.titanbyte.co/api/my-customers',
           headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${user.access_token}`,

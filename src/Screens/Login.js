@@ -32,7 +32,7 @@ const Login = ({navigation}) => {
         redirect: 'follow',
       };
       fetch(
-        'https://generator.thecodelogy.com/api/login?email&password',
+        'http://generatorapp.titanbyte.co/api/login?email&password',
         requestOptions,
       )
         .then(response => response.text())
@@ -75,7 +75,7 @@ const Login = ({navigation}) => {
         redirect: 'follow',
       };
       fetch(
-        'https://generator.thecodelogy.com/api/login?email&password',
+        'http://generatorapp.titanbyte.co/api/login?email&password',
         requestOptions,
       )
         .then(response => response.text())
@@ -88,6 +88,9 @@ const Login = ({navigation}) => {
               AsyncStorage.setItem('User', JSON.stringify(res));
 
               setTechloading(false);
+              console.log(
+                "TOKEN",response
+              )
               dispatch(loginUser(response));
             } else {
               setTechloading(false);

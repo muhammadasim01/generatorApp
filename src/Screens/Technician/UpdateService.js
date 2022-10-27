@@ -237,7 +237,7 @@ const ServiceCall1 = ({navigation, route}) => {
             };
 
             fetch(
-              'https://generator.thecodelogy.com/api/callhistory-update',
+              'http://generatorapp.titanbyte.co/api/callhistory-update',
               requestOptions,
             )
               .then(response => response.text())

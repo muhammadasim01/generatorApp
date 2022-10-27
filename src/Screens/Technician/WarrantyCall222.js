@@ -121,7 +121,7 @@ const SpringFallSerivce6 = ({navigation, route}) => {
         };
 
         fetch(
-          'https://generator.thecodelogy.com/api/service-call',
+          'http://generatorapp.titanbyte.co/api/service-call',
           requestOptions,
         )
           .then(response => response.text())
