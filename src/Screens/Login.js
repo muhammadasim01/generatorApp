@@ -32,7 +32,7 @@ const Login = ({navigation}) => {
         redirect: 'follow',
       };
       fetch(
-        'http://generatorapp.titanbyte.co/api/login?email&password',
+        'https://generatorapp.titanbyte.co/api/login?email&password',
         requestOptions,
       )
         .then(response => response.text())
@@ -75,7 +75,7 @@ const Login = ({navigation}) => {
         redirect: 'follow',
       };
       fetch(
-        'http://generatorapp.titanbyte.co/api/login?email&password',
+        'https://generatorapp.titanbyte.co/api/login?email&password',
         requestOptions,
       )
         .then(response => response.text())

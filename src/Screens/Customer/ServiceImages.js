@@ -27,7 +27,7 @@ const ServiceImages = ({navigation, route}) => {
     };
 
     fetch(
-      `http://generatorapp.titanbyte.co/api/all-images?id=${id}`,
+      `https://generatorapp.titanbyte.co/api/all-images?id=${id}`,
       requestOptions,
     )
       .then(response => response.text())
@@ -45,12 +45,12 @@ const ServiceImages = ({navigation, route}) => {
           marginBottom: 100,
         }}>
         {data.map((item, i) => {
-          console.log(`http://generatorapp.titanbyte.co/api/storage/${item}`);
+          console.log(`https://generatorapp.titanbyte.co/api/storage/${item}`);
           if (i === index) {
             return (
               <Image
                 source={{
-                  uri: `http://generatorapp.titanbyte.co/api/storage/${item}`,
+                  uri: `https://generatorapp.titanbyte.co/api/storage/${item}`,
                 }}
                 style={{height: '100%', width: '100%'}}
               />

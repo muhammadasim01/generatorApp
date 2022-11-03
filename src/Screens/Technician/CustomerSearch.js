@@ -50,7 +50,7 @@ const CustomerSearch = ({navigation}) => {
 
     var config = {
       method: 'get',
-      url: `http://generatorapp.titanbyte.co/api/all-customers`,
+      url: `https://generatorapp.titanbyte.co/api/all-customers`,
       headers: {
         Authorization: `Bearer ${user.access_token}`,
       },
@@ -78,7 +78,7 @@ const CustomerSearch = ({navigation}) => {
 
   //     var config = {
   //       method: 'get',
-  //       url: 'http://generatorapp.titanbyte.co/api/all-customers',
+  //       url: 'https://generatorapp.titanbyte.co/api/all-customers',
   //       headers: {
   //         Authorization: `Bearer ${user.access_token}`,
   //       },

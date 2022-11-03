@@ -23,28 +23,28 @@ export default {
           fastInterval: 5000,
         })
           .then(data => {
-            // Geolocation.getCurrentPosition(
-            //     position => {
+            Geolocation.getCurrentPosition(
+                position => {
 
-            //         resolve(position);
+                    resolve(position);
 
-            //     },
-            //     error => {
-            //         if (error.message.includes("Location request timed out")) {
-            //             if (call < 5) {
-            //                 this.getCurrentLocation();
-            //                 call++;
-            //             }
-            //         }
-            //         if (error.message.includes("Location permission was not granted")) {
-            //             // Permission.LOCATION();
-            //             if (callPermission < 5) {
-            //                 this.getCurrentLocation();
-            //                 callPermission++;
-            //             }
-            //         }
-            //         resolve(undefined);
-            //     });
+                },
+                error => {
+                    if (error.message.includes("Location request timed out")) {
+                        if (call < 5) {
+                            this.getCurrentLocation();
+                            call++;
+                        }
+                    }
+                    if (error.message.includes("Location permission was not granted")) {
+                        Permission.LOCATION();
+                        if (callPermission < 5) {
+                            this.getCurrentLocation();
+                            callPermission++;
+                        }
+                    }
+                    resolve(undefined);
+                });
 
             check(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION)
               .then(result => {
@@ -90,7 +90,7 @@ export default {
                         resolve(position);
                       },
                       error => {
-                        console.log('error.message FAzzy ', error.message);
+                        console.log('error.message FAzzy 3', error.message);
 
                         resolve(undefined);
                       },
@@ -101,25 +101,25 @@ export default {
                       },
                     );
 
-                    // GeolocationService.getCurrentPosition(
-                    //     (position) => {
+                    GeolocationService.getCurrentPosition(
+                        (position) => {
 
-                    //         resolve(position);
-                    //     },
-                    //     (error) => {
-                    //         // See error code charts below.
-                    //         console.log(error.code, error.message);
-                    //         resolve(undefined);
-                    //     },
-                    //     {
-                    //         enableHighAccuracy: true,
-                    //         // timeout: 15000,
-                    //         maximumAge: 5000,
-                    //         forceRequestLocation: true,
-                    //         forceLocationManager: true,
-                    //         showLocationDialog: true
-                    //     }
-                    // );
+                            resolve(position);
+                        },
+                        (error) => {
+                            // See error code charts below.
+                            console.log(error.code, error.message);
+                            resolve(undefined);
+                        },
+                        {
+                            enableHighAccuracy: true,
+                            // timeout: 15000,
+                            maximumAge: 5000,
+                            forceRequestLocation: true,
+                            forceLocationManager: true,
+                            showLocationDialog: true
+                        }
+                    );
 
                     break;
                   case RESULTS.BLOCKED:
@@ -153,7 +153,7 @@ export default {
             resolve(position);
           },
           error => {
-            console.log('error.message FAzzy ', error.message);
+            console.log('error.message FAzzy1 ', error.message);
 
             resolve(undefined);
           },
@@ -163,101 +163,101 @@ export default {
             maximumAge: 15000,
           },
         );
-        // check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE)
-        //   .then(result => {
-        //     console.log(result, 'FAraz Shah');
-        //     switch (result) {
-        //       case RESULTS.UNAVAILABLE:
-        //         resolve(undefined);
-        //         if (isShowed) return;
+        check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE)
+          .then(result => {
+            console.log(result, 'FAraz Shah while accesing ios location');
+            switch (result) {
+              case RESULTS.UNAVAILABLE:
+                resolve(undefined);
+                if (isShowed) return;
 
-        //         const title0 = `Location services is off!`;
-        //         const message0 = `Please, enable location from mobile setting.`;
+                const title0 = `Location services is off!`;
+                const message0 = `Please, enable location from mobile setting.`;
 
-        //         customAlert(title0, message0);
-        //         isShowed = true;
+                customAlert(title0, message0);
+                isShowed = true;
 
-        //         break;
-        //       case RESULTS.DENIED:
-        //         if (isShowed) return;
-        //         const title1 =
-        //           'The permission has not been requested / is denied but requestable';
+                break;
+              case RESULTS.DENIED:
+                if (isShowed) return;
+                const title1 =
+                  'The permission has not been requested / is denied but requestable';
 
-        //         customAlert(
-        //           title1,
-        //           '',
-        //           () => {
-        //             Geolocation.requestAuthorization();
-        //           },
-        //           true,
-        //         );
-        //         isShowed = true;
-        //         this.getCurrentLocation();
-        //         break;
-        //       case RESULTS.LIMITED:
-        //         if (isShowed) return;
-        //         const title2 =
-        //           'The permission is limited: some actions are possible';
+                customAlert(
+                  title1,
+                  '',
+                  () => {
+                    Geolocation.requestAuthorization();
+                  },
+                  true,
+                );
+                isShowed = true;
+                this.getCurrentLocation();
+                break;
+              case RESULTS.LIMITED:
+                if (isShowed) return;
+                const title2 =
+                  'The permission is limited: some actions are possible';
 
-        //         customAlert(title2, '', () => {}, true);
-        //         isShowed = true;
-        //         break;
-        //       case RESULTS.GRANTED:
-        //         Geolocation.getCurrentPosition(
-        //           position => {
-        //             console.log(position, 'Position');
-        //             resolve(position);
-        //           },
-        //           error => {
-        //             console.log('error.message FAzzy ', error.message);
+                customAlert(title2, '', () => {}, true);
+                isShowed = true;
+                break;
+              case RESULTS.GRANTED:
+                Geolocation.getCurrentPosition(
+                  position => {
+                    console.log(position, 'Position');
+                    resolve(position);
+                  },
+                  error => {
+                    console.log('error.message FAzzy 2 ', error.message);
 
-        //             resolve(undefined);
-        //           },
-        //           {
-        //             enableHighAccuracy: false,
-        //             timeout: 5000,
-        //             maximumAge: 0,
-        //           },
-        //         );
-        //         // GeolocationService.getCurrentPosition(
-        //         //     (position) => {
+                    resolve(undefined);
+                  },
+                  {
+                    enableHighAccuracy: false,
+                    timeout: 5000,
+                    maximumAge: 0,
+                  },
+                );
+                GeolocationService.getCurrentPosition(
+                    (position) => {
 
-        //         //         resolve(position);
-        //         //     },
-        //         //     (error) => {
-        //         //         // See error code charts below.
-        //         //         console.log(error.code,"Fazy", error.message);
-        //         //         resolve(undefined);
-        //         //     },
-        //         //     {
-        //         //         enableHighAccuracy: true,
-        //         //         timeout: 3000,
-        //         //         maximumAge: 0,
-        //         //         forceRequestLocation: true,
-        //         //         forceLocationManager: true,
-        //         //         showLocationDialog: true
-        //         //     }
-        //         // );
+                        resolve(position);
+                    },
+                    (error) => {
+                        // See error code charts below.
+                        console.log(error.code,"Fazy", error.message);
+                        resolve(undefined);
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 3000,
+                        maximumAge: 0,
+                        forceRequestLocation: true,
+                        forceLocationManager: true,
+                        showLocationDialog: true
+                    }
+                );
 
-        //         break;
-        //       case RESULTS.BLOCKED:
-        //         resolve(undefined);
-        //         if (isShowed) return;
-        //         const title3 =
-        //           'The permission is denied and not requestable anymore';
+                break;
+              case RESULTS.BLOCKED:
+                resolve(undefined);
+                if (isShowed) return;
+                const title3 =
+                  'The permission is denied and not requestable anymore';
 
-        //         customAlert(title3, '', () => {}, true);
-        //         isShowed = true;
+                customAlert(title3, '', () => {}, true);
+                isShowed = true;
 
-        //         break;
-        //     }
-        //   })
-        //   .catch(error => {
-        //     // …
-        //     console.log('error=> ', error);
+                break;
+            }
+          })
+          .catch(error => {
+            // …
+            console.log('error=> ', error);
 
-        //     resolve(undefined);
-        //   });
+            resolve(undefined);
+          });
       }
     }); //end of PROMISE
   }, //end of getCurrentLocation
@@ -308,7 +308,7 @@ function customAlert(
         text: `Settings`,
         style: 'destructive',
         onPress() {
-          // Linking.openURL('app-settings');
+          Linking.openURL('app-settings');
           onPress();
         },
       },

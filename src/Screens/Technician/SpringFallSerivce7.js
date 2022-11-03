@@ -131,7 +131,7 @@ const SpringFallSerivce7 = ({navigation, route}) => {
         };
 
         fetch(
-          'http://generatorapp.titanbyte.co/api/service-call',
+          'https://generatorapp.titanbyte.co/api/service-call',
           requestOptions,
         )
           .then(response => response.text())

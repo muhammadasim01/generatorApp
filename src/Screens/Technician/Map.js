@@ -14,6 +14,7 @@ import axios from 'axios';
 import Location from '../../Helper/MobileLocation';
 import Geolocation from '@react-native-community/geolocation';
 import {calculateDistance} from '../../Helper/DistanceCalculator';
+import MobileLocation from '../../Helper/MobileLocation';
 
 const LATITUDE_DELTA = 0.01;
 const LONGITUDE_DELTA = 0.01;
@@ -39,8 +40,8 @@ const Map = ({navigation}) => {
   const getDirection = () => {};
 
   const getUsersLocation = async () => {
-    let res = await Location.getCurrentLocation();
-    console.log(res, 'Location');
+    let res = await MobileLocation.getCurrentLocation();
+    console.log(res, 'IOS LOCATION');
 
     if (res === undefined) {
       setTimeout(async () => {
@@ -56,7 +57,7 @@ const Map = ({navigation}) => {
     }
   };
   useEffect(() => {
-    // getUsersLocation();
+    getUsersLocation();
     console.log(lat, long, 'Fazzy');
     setLoading(true);
 
@@ -66,7 +67,7 @@ const Map = ({navigation}) => {
         setLong(position.coords.longitude);
         var config = {
           method: 'get',
-          url: 'http://generatorapp.titanbyte.co/api/my-customers',
+          url: 'https://generatorapp.titanbyte.co/api/my-customers',
           headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${user.access_token}`,
@@ -82,7 +83,7 @@ const Map = ({navigation}) => {
             if (response.data) {
               setData(response.data);
             }
-            //  setCustomers(response.data.data)
+             setCustomers(response.data.data)
             setTimeout(() => {
               setLoading(false);
             }, 2000);
@@ -95,7 +96,7 @@ const Map = ({navigation}) => {
       async error => {
         console.log(error.message);
         if (Platform.OS === 'android') {
-          // await _enableGPS();
+          await _enableGPS();
         }
       },
       {
@@ -134,24 +135,24 @@ const Map = ({navigation}) => {
                       item: item.customer,
                     });
                     console.log(item, 'Hello');
-                    // let lat = parseFloat(item.latitude);
-                    // let lon = parseFloat(item.longitude);
+                    let lat = parseFloat(item.latitude);
+                    let lon = parseFloat(item.longitude);
 
-                    // if (Platform === 'android' || 'ios') {
-                    //   Linking.openURL(
-                    //     `https://www.google.com/maps/dir/?api=1&origin=` +
-                    //       lat +
-                    //       `,` +
-                    //       long +
-                    //       `&destination=` +
-                    //       lat +
-                    //       `,` +
-                    //       lon +
-                    //       `&travelmode=driving`,
-                    //   );
-                    // } else {
-                    //   console.log('Something Went Wrong?');
-                    // }
+                    if (Platform === 'android' || 'ios') {
+                      Linking.openURL(
+                        `https://www.google.com/maps/dir/?api=1&origin=` +
+                          lat +
+                          `,` +
+                          long +
+                          `&destination=` +
+                          lat +
+                          `,` +
+                          lon +
+                          `&travelmode=driving`,
+                      );
+                    } else {
+                      console.log('Something Went Wrong?');
+                    }
                   }}
                   title={item.customer.fname}
                   draggable
@@ -159,8 +160,8 @@ const Map = ({navigation}) => {
                   coordinate={{
                     latitude: parseFloat(item.customer.latitude),
                     longitude: parseFloat(item.customer.longitude),
-                    // latitudeDelta: LATITUDE_DELTA,
-                    // longitudeDelta: LONGITUDE_DELTA,
+                    latitudeDelta: LATITUDE_DELTA,
+                    longitudeDelta: LONGITUDE_DELTA,
                   }}
                   onCalloutPress={e => {
                     console.log('Marker was clicked', e);

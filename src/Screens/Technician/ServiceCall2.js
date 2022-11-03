@@ -37,30 +37,8 @@ const SpringFallSerivce6 = ({navigation, route}) => {
       id: 2,
       image: null,
     },
-    {
-      id: 3,
-      image: null,
-    },
-    {
-      id: 4,
-      image: null,
-    },
-    {
-      id: 5,
-      image: null,
-    },
-    {
-      id: 6,
-      image: null,
-    },
-    {
-      id: 7,
-      image: null,
-    },
-    {
-      id: 8,
-      image: null,
-    },
+  
+
   ]);
 
   const submitService = () => {
@@ -121,7 +99,7 @@ const SpringFallSerivce6 = ({navigation, route}) => {
         };
 
         fetch(
-          'http://generatorapp.titanbyte.co/api/service-call',
+          'https://generatorapp.titanbyte.co/api/service-call',
           requestOptions,
         )
           .then(response => response.text())
@@ -170,7 +148,7 @@ const SpringFallSerivce6 = ({navigation, route}) => {
 
       var config = {
         method: 'post',
-        url: 'http://generatorapp.titanbyte.co/api/service-call-photo',
+        url: 'https://generatorapp.titanbyte.co/api/service-call-photo',
         headers: {
           'Content-Type': 'multipart/form-data',
 

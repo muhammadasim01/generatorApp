@@ -16,7 +16,7 @@ const ForgetPassword = ({navigation}) => {
 
     var config = {
       method: 'post',
-      url: 'http://generatorapp.titanbyte.co/api/password-reset',
+      url: 'https://generatorapp.titanbyte.co/api/password-reset',
       headers: {
         'Content-Type': 'application/json',
       },

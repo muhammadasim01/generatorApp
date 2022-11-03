@@ -36,7 +36,7 @@ const UserNotifications = ({navigation}) => {
     };
 
     fetch(
-      `http://generatorapp.titanbyte.co/api/customer-notifications/${2}`,
+      `https://generatorapp.titanbyte.co/api/customer-notifications/${2}`,
       requestOptions,
     )
       .then(response => response.text())

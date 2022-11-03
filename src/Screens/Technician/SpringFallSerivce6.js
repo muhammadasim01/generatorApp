@@ -84,7 +84,7 @@ const SpringFallSerivce6 = ({navigation, route}) => {
 
       var config = {
         method: 'post',
-        url: 'http://generatorapp.titanbyte.co/api/service-call-photo',
+        url: 'https://generatorapp.titanbyte.co/api/service-call-photo',
         headers: {
           'Content-Type': 'multipart/form-data',
 

@@ -68,7 +68,7 @@ const CustomerDetails = ({navigation, route}) => {
       setLoading(true);
       var config = {
         method: 'get',
-        url: `http://generatorapp.titanbyte.co/api/customer-generator/${item.id}`,
+        url: `https://generatorapp.titanbyte.co/api/customer-generator/${item.id}`,
         headers: {
           Accept: 'application/json',
 

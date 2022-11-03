@@ -121,7 +121,7 @@ const SpringFallSerivce6 = ({navigation, route}) => {
         };
 
         fetch(
-          'http://generatorapp.titanbyte.co/api/service-call',
+          'https://generatorapp.titanbyte.co/api/service-call',
           requestOptions,
         )
           .then(response => response.text())
@@ -170,7 +170,7 @@ const SpringFallSerivce6 = ({navigation, route}) => {
 
       var config = {
         method: 'post',
-        url: 'http://generatorapp.titanbyte.co/api/warranty-call-photo',
+        url: 'https://generatorapp.titanbyte.co/api/warranty-call-photo',
         headers: {
           'Content-Type': 'multipart/form-data',
 

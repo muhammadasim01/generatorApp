@@ -43,7 +43,7 @@ const InCompleteServiceCalls = ({navigation}) => {
     };
 
     fetch(
-      `http://generatorapp.titanbyte.co/api/incomplete-service-call?tech_id=${user.user.id}`,
+      `https://generatorapp.titanbyte.co/api/incomplete-service-call?tech_id=${user.user.id}`,
 
       requestOptions,
     )

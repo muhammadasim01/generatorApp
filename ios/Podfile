@@ -1,13 +1,19 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-platform :ios, '12.0'
+platform :ios, '14.0'
 install! 'cocoapods', :deterministic_uuids => false
 
 target 'generatorappv1' do
 
   rn_maps_path = '../node_modules/react-native-maps'
 pod 'react-native-google-maps', :path => rn_maps_path
+
+ # React Native Maps dependencies
+ rn_maps_path = '../node_modules/react-native-maps'
+ pod 'react-native-google-maps', :path => rn_maps_path
+#  pod 'GoogleMaps'
+  pod 'Google-Maps-iOS-Utils'
   config = use_native_modules!
 
   permissions_path = '../node_modules/react-native-permissions/ios'
