@@ -219,7 +219,7 @@ export default {
                     maximumAge: 0,
                   },
                 );
-                GeolocationService.getCurrentPosition(
+                Geolocation.getCurrentPosition(
                     (position) => {
 
                         resolve(position);

@@ -60,6 +60,7 @@ const Map = ({navigation}) => {
     getUsersLocation();
     console.log(lat, long, 'Fazzy');
     setLoading(true);
+    console.log('USER ID CHECKING'+ user.user.id);
 
     Geolocation.getCurrentPosition(
       async position => {
@@ -72,14 +73,15 @@ const Map = ({navigation}) => {
             Accept: 'application/json',
             Authorization: `Bearer ${user.access_token}`,
           },
-          data: {
+          params: {
             tech_id: user.user.id,
-          },
+          }
         };
 
         axios(config)
           .then(function (response) {
-            console.log(response.data);
+            console.log('this is response data below');
+            console.log(response);
             if (response.data) {
               setData(response.data);
             }
@@ -126,8 +128,9 @@ const Map = ({navigation}) => {
               latitudeDelta: LATITUDE_DELTA,
               longitudeDelta: LONGITUDE_DELTA,
             }}>
+              
             {data.map(item => {
-              console.log(item, 'KKKKKKK');
+              console.log(item, 'Testing Data For Marker');
               return (
                 <Marker
                   onPress={() => {
@@ -138,7 +141,7 @@ const Map = ({navigation}) => {
                     let lat = parseFloat(item.latitude);
                     let lon = parseFloat(item.longitude);
 
-                    if (Platform === 'android' || 'ios') {
+                    if (Platform === 'android') {
                       Linking.openURL(
                         `https://www.google.com/maps/dir/?api=1&origin=` +
                           lat +
@@ -157,6 +160,7 @@ const Map = ({navigation}) => {
                   title={item.customer.fname}
                   draggable
                   pinColor="#1A98D5"
+                  image={require('../markerImage/marker.png')}
                   coordinate={{
                     latitude: parseFloat(item.customer.latitude),
                     longitude: parseFloat(item.customer.longitude),

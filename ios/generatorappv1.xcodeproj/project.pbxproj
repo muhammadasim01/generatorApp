@@ -469,7 +469,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.palselectric2app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.palselectric33app;
 				PRODUCT_NAME = generatorappv1;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
