@@ -100,27 +100,6 @@ export default {
                         maximumAge: 15000,
                       },
                     );
-
-                    GeolocationService.getCurrentPosition(
-                        (position) => {
-
-                            resolve(position);
-                        },
-                        (error) => {
-                            // See error code charts below.
-                            console.log(error.code, error.message);
-                            resolve(undefined);
-                        },
-                        {
-                            enableHighAccuracy: true,
-                            // timeout: 15000,
-                            maximumAge: 5000,
-                            forceRequestLocation: true,
-                            forceLocationManager: true,
-                            showLocationDialog: true
-                        }
-                    );
-
                     break;
                   case RESULTS.BLOCKED:
                     resolve(undefined);
