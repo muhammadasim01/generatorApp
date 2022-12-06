@@ -22,6 +22,7 @@ import {useSelector} from 'react-redux';
 import SimpleToast from 'react-native-simple-toast';
 const ServiceCall1 = ({navigation, route}) => {
   const {item} = route.params;
+  console.log('we got these resuls', item);
   const user = useSelector(state => state.Reducer.user);
 
   const [isVisible, setIsVisible] = useState(false);
@@ -76,7 +77,7 @@ const ServiceCall1 = ({navigation, route}) => {
           activeUnderlineColor="transparent"
           numberOfLines={3}
           multiline={true}
-          value={note}
+          value={item.notes}
           onChangeText={text => setNote(text)}
           style={{
             backgroundColor: 'white',

@@ -37,8 +37,6 @@ const SpringFallSerivce6 = ({navigation, route}) => {
       id: 2,
       image: null,
     },
-  
-
   ]);
 
   const submitService = () => {
@@ -55,72 +53,68 @@ const SpringFallSerivce6 = ({navigation, route}) => {
           newImages.push(item.photo_id);
         });
         console.log(newImages, 'AAAAAAAAA');
-        let newArray = [];
-        fromSecondScreen.materials.map(item => {
-          newArray.push(item.name);
-        });
-        console.log(newArray, 'Material Test 123');
-        data.append('user_id', fromSecondScreen.user_id);
-        data.append('tech_id', user.user.id);
-        data.append('notes', fromSecondScreen.note);
-        newArray.map(item => {
-          data.append('materials[]', item);
-        });
-
-        data.append(
-          'date',
-          new Date()
-            .toISOString()
-            .replace(/T.*/, '')
-            .split('-')
-            .reverse()
-            .join('-'),
-        );
-        data.append('time', new Date().toLocaleTimeString());
-
-        data.append('service_type', 'Service Call');
-        data.append('status', selected ? 'incomplete' : 'complete');
-        data.append('generator_id', fromSecondScreen.generator_id);
-
-        data.append('po', fromSecondScreen.po);
-
-        newImages.map(item => {
-          if (item) {
-            data.append('photo[]', item);
-          }
-        });
-        var requestOptions = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'multipart/form-data;',
-            Authorization: `Bearer ${user.access_token}`,
-          },
-          body: data,
-        };
-
-        fetch(
-          'https://generatorapp.titanbyte.co/api/service-call',
-          requestOptions,
-        )
-          .then(response => response.text())
-          .then(result => {
-            console.log(result, 'FFFFFFFFF');
-            setLoading(false);
-
-            Toast.show(result);
-            navigation.replace('TechnicalMain');
-          })
-          .catch(error => {
-            setLoading(false);
-            console.log(error);
-
-            Toast.show('Something Went Wrong');
-          });
-      } else {
-        setLoading(false);
-
-        SimpleToast.show('Image is required.');
       }
+      let newArray = [];
+      fromSecondScreen.materials.map(item => {
+        newArray.push(item.name);
+      });
+      console.log(newArray, 'Material Test 123');
+      data.append('user_id', fromSecondScreen.user_id);
+      data.append('tech_id', user.user.id);
+      data.append('notes', fromSecondScreen.note);
+      newArray.map(item => {
+        data.append('materials[]', item);
+      });
+
+      data.append(
+        'date',
+        new Date()
+          .toISOString()
+          .replace(/T.*/, '')
+          .split('-')
+          .reverse()
+          .join('-'),
+      );
+      data.append('time', new Date().toLocaleTimeString());
+
+      data.append('service_type', 'Service Call');
+      data.append('status', selected ? 'incomplete' : 'complete');
+      data.append('generator_id', fromSecondScreen.generator_id);
+
+      data.append('po', fromSecondScreen.po);
+
+      newImages.map(item => {
+        if (item) {
+          data.append('photo[]', item);
+        }
+      });
+      var requestOptions = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'multipart/form-data;',
+          Authorization: `Bearer ${user.access_token}`,
+        },
+        body: data,
+      };
+
+      fetch(
+        'https://generatorapp.titanbyte.co/api/service-call',
+        requestOptions,
+      )
+        .then(response => response.text())
+        .then(result => {
+          console.log(result, 'FFFFFFFFF');
+          setLoading(false);
+
+          Toast.show(result);
+          navigation.replace('TechnicalMain');
+        })
+        .catch(error => {
+          setLoading(false);
+          console.log(error);
+
+          Toast.show('Something Went Wrong');
+        });
     }
   };
 
@@ -320,7 +314,7 @@ const SpringFallSerivce6 = ({navigation, route}) => {
             }}>
             <ActivityIndicator color={'#000'} size="large" />
             <Text style={{color: '#000', marginVertical: 10, fontSize: 18}}>
-              Please wait images uploading...
+              Please wait...
             </Text>
           </View>
         </View>

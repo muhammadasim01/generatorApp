@@ -32,117 +32,117 @@ const SpringFallSerivce1 = ({navigation, route}) => {
     {
       id: 1,
       name: 'Enclosure',
-      selected: true,
+      selected: false,
     },
     {
       id: 2,
       name: 'Base',
-      selected: true,
+      selected: false,
     },
     {
       id: 3,
       name: 'Vents',
-      selected: true,
+      selected: false,
     },
     {
       id: 4,
       name: 'Engine',
-      selected: true,
+      selected: false,
     },
     {
       id: 1,
       name: 'Radiator',
-      selected: true,
+      selected: false,
     },
     {
       id: 2,
       name: 'Transfer Switch',
-      selected: true,
+      selected: false,
     },
     {
       id: 3,
       name: 'Battery',
-      selected: true,
+      selected: false,
     },
     {
       id: 4,
       name: 'Clean interior of generator',
-      selected: true,
+      selected: false,
     },
     {
       id: 1,
       name: 'Insure all exterior vents are clear of debris',
-      selected: true,
+      selected: false,
     },
     {
       id: 2,
       name: 'Transfer Power test',
-      selected: true,
+      selected: false,
     },
     {
       id: 3,
       name: 'Check voltage',
-      selected: true,
+      selected: false,
     },
     {
       id: 4,
       name: 'Check frequency',
-      selected: true,
+      selected: false,
     },
     {
       id: 2,
       name: 'Wipe down generator',
-      selected: true,
+      selected: false,
     },
     {
       id: 3,
       name: 'Lubricate transfer switch',
-      selected: true,
+      selected: false,
     },
     {
       id: 4,
       name: 'Check battery level and functioning',
-      selected: true,
+      selected: false,
     },
     {
       id: 2,
       name: 'Check battery cable and tighten connections',
-      selected: true,
+      selected: false,
     },
     {
       id: 3,
       name: 'Load bank as described in load bank details sheet',
-      selected: true,
+      selected: false,
     },
     {
       id: 4,
       name: 'Radiator level and antifreez temperature rating / check',
-      selected: true,
+      selected: false,
     },
     {
       id: 2,
       name: 'Add antifreeze if needed',
-      selected: true,
+      selected: false,
     },
     {
       id: 3,
       name: 'Replace oil and oil filter',
-      selected: true,
+      selected: false,
     },
     {
       id: 4,
       name: 'Replace air filter',
-      selected: true,
+      selected: false,
     },
     {
       id: 3,
       name: 'Proper recycling/disposal of all fluids',
-      selected: true,
+      selected: false,
     },
     {
       id: 4,
       name: 'Provide full written report',
-      selected: true,
+      selected: false,
     },
   ]);
   return (
@@ -259,7 +259,7 @@ const SpringFallSerivce1 = ({navigation, route}) => {
             width={160}
             onPress={() => {
               console.log(data.some(e => e.selected === true));
-              if (data.some(e => e.selected === true)) {
+              if (!data.filter(e => e.selected === false).length >= 1) {
                 let newArray = [];
 
                 data.map(item => {
@@ -279,7 +279,7 @@ const SpringFallSerivce1 = ({navigation, route}) => {
                   fromSecondScreen: newData,
                 });
               } else {
-                SimpleToast.show('Atleast one material is required.');
+                SimpleToast.show('please filled all checkboxes');
               }
             }}
           />
@@ -350,6 +350,7 @@ const SpringFallSerivce1 = ({navigation, route}) => {
                     custom: true,
                     selected: true,
                   });
+
                   setData(newArray);
                   setIsVisible(false);
                   setCustomStep('');

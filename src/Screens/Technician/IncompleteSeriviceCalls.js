@@ -12,6 +12,8 @@ import {useFocusEffect} from '@react-navigation/native';
 
 const InCompleteServiceCalls = ({navigation}) => {
   const user = useSelector(state => state.Reducer.user);
+  console.log('useridis', user.user.id);
+  console.log('user token', user.access_token);
 
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
