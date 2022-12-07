@@ -64,7 +64,7 @@ const SpringFallSerivce6 = ({navigation, route}) => {
     },
   ]);
   useEffect(() => {
-    console.log('TOKEN',`Bearer ${user.access_token}`);
+    console.log('TOKEN', `Bearer ${user.access_token}`);
   }, []);
   const submitService = () => {
     // console.log(fromSecondScreen);
@@ -98,10 +98,11 @@ const SpringFallSerivce6 = ({navigation, route}) => {
         data.append('worked_perform', fromSecondScreen.workedPerformed);
         data.append('date', fromSecondScreen.date);
         data.append('time', fromSecondScreen.time);
+        data.append('tech_id', user.user.id);
         data.append('status', selected ? 'incomplete' : 'complete');
         // data.append('custom_field', newArray);
         newArray.map(item => {
-          data.append('custom_field[]', item);
+          data.append('materials[]', item);
         });
         newImages.map(item => {
           if (item) {
@@ -121,14 +122,15 @@ const SpringFallSerivce6 = ({navigation, route}) => {
         };
 
         fetch(
-          'https://generatorapp.titanbyte.co/api/warranty-call',
+          // 'https://generatorapp.titanbyte.co/api/warranty-call',
+          'https://generatorapp.titanbyte.co/api/service-call',
           requestOptions,
         )
           .then(response => response.text())
           .then(result => {
             console.log(result, 'FFFFFFFFF');
             setLoading(false);
-
+            console.log('WE HAVE DONE THAT');
             Toast.show(result);
             navigation.replace('TechnicalMain');
           })
@@ -169,11 +171,12 @@ const SpringFallSerivce6 = ({navigation, route}) => {
       data.append('photo', newImage);
       var config = {
         method: 'post',
-        url: 'https://generatorapp.titanbyte.co/api/warranty-call-photo',
+        // url: 'https://generatorapp.titanbyte.co/api/warranty-call-photo',
+        url: 'https://generatorapp.titanbyte.co/api/service-call-photo',
         headers: {
           'Content-Type': 'multipart/form-data',
 
-          'Authorization': `Bearer ${user.access_token}`,
+          Authorization: `Bearer ${user.access_token}`,
         },
         data: data,
       };

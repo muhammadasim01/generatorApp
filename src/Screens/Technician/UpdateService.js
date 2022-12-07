@@ -28,7 +28,7 @@ const ServiceCall1 = ({navigation, route}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [customStep, setCustomStep] = useState('');
   const [po, setPo] = useState(Math.floor(Math.random() * 90000) + 10000);
-  const [note, setNote] = useState('');
+  const [note, setNote] = useState(item.notes);
   const [data, setData] = useState([]);
   return (
     <Layout back navigation={navigation}>
@@ -77,7 +77,7 @@ const ServiceCall1 = ({navigation, route}) => {
           activeUnderlineColor="transparent"
           numberOfLines={3}
           multiline={true}
-          value={item.notes}
+          value={note}
           onChangeText={text => setNote(text)}
           style={{
             backgroundColor: 'white',
