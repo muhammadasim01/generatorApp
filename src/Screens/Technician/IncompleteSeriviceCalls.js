@@ -68,7 +68,7 @@ const InCompleteServiceCalls = ({navigation}) => {
 
       <FlatList
         style={{marginTop: 10}}
-        data={data}
+        data={data.reverse()}
         renderItem={({item}) => (
           <TouchableOpacity
             style={styles.card}

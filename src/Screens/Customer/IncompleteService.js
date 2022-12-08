@@ -91,7 +91,7 @@ const InCompleteService = ({navigation}) => {
 
           <FlatList
             style={{marginTop: 10}}
-            data={data}
+            data={data.reverse()}
             renderItem={({item}) => (
               <Service
                 item={item}

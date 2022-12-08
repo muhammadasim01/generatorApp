@@ -18,7 +18,6 @@ export default {
           resolve(true);
         }
       } catch (e) {
-        console.log(e);
         resolve(false);
       }
     }); //end of PROMISE
@@ -41,7 +40,6 @@ export default {
           resolve(true);
         }
       } catch (e) {
-        console.log(e);
         resolve(false);
       }
     }); //end of PROMISE
@@ -64,7 +62,6 @@ export default {
           resolve(true);
         }
       } catch (e) {
-        console.log(e);
         resolve(false);
       }
     }); //end of PROMISE

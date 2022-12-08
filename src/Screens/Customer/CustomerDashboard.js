@@ -236,7 +236,7 @@ const CustomerDashboard = ({navigation}) => {
 
       {data ? (
         <FlatList
-          data={data}
+          data={data.reverse()}
           renderItem={({item}) => (
             <Service
               item={item}

@@ -108,7 +108,7 @@ const ServiceDetail = ({navigation, route}) => {
             marginBottom: 30,
           }}>
           <FlatList
-            data={data}
+            data={data.reverse()}
             renderItem={({item}) => (
               <View style={{padding: 4}}>
                 <Text style={{color: '#000'}}>{item.material}</Text>

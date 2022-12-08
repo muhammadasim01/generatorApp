@@ -24,31 +24,31 @@ export default {
         })
           .then(data => {
             Geolocation.getCurrentPosition(
-                position => {
-
-                    resolve(position);
-
-                },
-                error => {
-                    if (error.message.includes("Location request timed out")) {
-                        if (call < 5) {
-                            this.getCurrentLocation();
-                            call++;
-                        }
-                    }
-                    if (error.message.includes("Location permission was not granted")) {
-                        Permission.LOCATION();
-                        if (callPermission < 5) {
-                            this.getCurrentLocation();
-                            callPermission++;
-                        }
-                    }
-                    resolve(undefined);
-                });
+              position => {
+                resolve(position);
+              },
+              error => {
+                if (error.message.includes('Location request timed out')) {
+                  if (call < 5) {
+                    this.getCurrentLocation();
+                    call++;
+                  }
+                }
+                if (
+                  error.message.includes('Location permission was not granted')
+                ) {
+                  Permission.LOCATION();
+                  if (callPermission < 5) {
+                    this.getCurrentLocation();
+                    callPermission++;
+                  }
+                }
+                resolve(undefined);
+              },
+            );
 
             check(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION)
               .then(result => {
-                console.log(result, 'Hrllo');
                 switch (result) {
                   case RESULTS.UNAVAILABLE:
                     resolve(undefined);
@@ -86,12 +86,9 @@ export default {
                   case RESULTS.GRANTED:
                     Geolocation.getCurrentPosition(
                       position => {
-                        console.log(position, 'Position');
                         resolve(position);
                       },
                       error => {
-                        console.log('error.message FAzzy 3', error.message);
-
                         resolve(undefined);
                       },
                       {
@@ -114,7 +111,6 @@ export default {
               })
               .catch(error => {
                 // …
-                console.log('error=> ', error);
 
                 resolve(undefined);
               });
@@ -128,12 +124,9 @@ export default {
       } else {
         Geolocation.getCurrentPosition(
           position => {
-            console.log(position, 'Position');
             resolve(position);
           },
           error => {
-            console.log('error.message FAzzy1 ', error.message);
-
             resolve(undefined);
           },
           {
@@ -144,7 +137,6 @@ export default {
         );
         check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE)
           .then(result => {
-            console.log(result, 'FAraz Shah while accesing ios location');
             switch (result) {
               case RESULTS.UNAVAILABLE:
                 resolve(undefined);
@@ -184,12 +176,9 @@ export default {
               case RESULTS.GRANTED:
                 Geolocation.getCurrentPosition(
                   position => {
-                    console.log(position, 'Position');
                     resolve(position);
                   },
                   error => {
-                    console.log('error.message FAzzy 2 ', error.message);
-
                     resolve(undefined);
                   },
                   {
@@ -199,23 +188,21 @@ export default {
                   },
                 );
                 Geolocation.getCurrentPosition(
-                    (position) => {
-
-                        resolve(position);
-                    },
-                    (error) => {
-                        // See error code charts below.
-                        console.log(error.code,"Fazy", error.message);
-                        resolve(undefined);
-                    },
-                    {
-                        enableHighAccuracy: true,
-                        timeout: 3000,
-                        maximumAge: 0,
-                        forceRequestLocation: true,
-                        forceLocationManager: true,
-                        showLocationDialog: true
-                    }
+                  position => {
+                    resolve(position);
+                  },
+                  error => {
+                    // See error code charts below.
+                    resolve(undefined);
+                  },
+                  {
+                    enableHighAccuracy: true,
+                    timeout: 3000,
+                    maximumAge: 0,
+                    forceRequestLocation: true,
+                    forceLocationManager: true,
+                    showLocationDialog: true,
+                  },
                 );
 
                 break;
@@ -233,7 +220,6 @@ export default {
           })
           .catch(error => {
             // …
-            console.log('error=> ', error);
 
             resolve(undefined);
           });
@@ -244,7 +230,6 @@ export default {
   watchPositon() {
     watchID = Geolocation.watchPosition(position => {
       const lastPosition = JSON.stringify(position);
-      console.log('lastPosition ===> ', lastPosition);
     });
   },
 }; //end of EXPORT DEFAULT
